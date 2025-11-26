@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { AI_NAME } from "@/config";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Truck } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
@@ -21,9 +21,10 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#1e3a8a] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">D</span>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative w-10 h-10 bg-gradient-to-br from-[#1e3a8a] to-[#1e3a8a]/80 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+              <span className="text-white font-bold text-lg absolute -left-0.5">D</span>
+              <Truck className="w-4 h-4 text-[#f97316] absolute right-1 bottom-1.5" />
             </div>
             <span className="font-bold text-xl text-[#1e3a8a]">{AI_NAME}</span>
           </Link>
