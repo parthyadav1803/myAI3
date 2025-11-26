@@ -2,6 +2,57 @@
 
 All notable changes to the Delivera project will be documented in this file.
 
+## [2.1.0] - 2024-11-26
+
+### Added
+
+#### Advanced Intelligence Suite v2.0
+
+##### Backend: System Prompt Engineering
+- **MODULE 1: Courier Negotiation Engine**
+  - Trigger: User mentions "negotiate," "lower rates," "compare prices," or complains about high costs
+  - Generates data-backed negotiation scripts with alternative partner comparisons
+  - Calculates Rating_Delta and Cost_Savings metrics
+  
+- **MODULE 2: RTO Shield (Predictive Risk Scoring)**
+  - Trigger: User proposes a specific shipment scenario
+  - Calculates risk probability with base 10% + risk accumulation factors
+  - Risk factors: Weather (+35%), Fragile/Perishable (+25%), Truck efficiency (+20%), Route history (+15%)
+  - Outputs risk percentage, root cause, and mitigation recommendations
+  
+- **MODULE 3: Green Logistics Calculator**
+  - Trigger: User mentions "Green," "Eco," "Carbon," or "Sustainability"
+  - Calculates CO2 savings comparing Diesel Truck (105g/km) vs EV Van (0g/km)
+  - Appends hidden rendering tag for frontend Green Badge display
+
+##### Frontend: UI Components
+- **GreenBadge Component** (`components/ui/green-badge.tsx`)
+  - Visual certificate for sustainability achievements
+  - Green gradient design with Leaf icon
+  - Displays calculated carbon savings in kg
+  - "Certified by Delivera Intelligence" footer
+  
+- **Chat Message Parsing Logic**
+  - Regex-based parsing for `[RENDER_GREEN_BADGE: SAVED_KG=X.XX]` tags
+  - Automatic tag removal from displayed text
+  - Dynamic rendering of GreenBadge below message content
+
+##### Landing Page Updates
+- **Advanced Intelligence Suite section** with 3 Pro feature cards:
+  1. Smart Negotiation Engine (Blue theme, Handshake icon)
+  2. RTO Risk Shield (Orange theme, ShieldAlert icon)
+  3. Sustainability Intelligence (Green theme, Leaf icon)
+
+#### New Files Created
+- `components/ui/green-badge.tsx` - Sustainability badge component
+
+#### Modified Files
+- `prompts.ts` - Added ADVANCED_INTELLIGENCE_PROMPT with 3 modules
+- `components/messages/assistant-message.tsx` - Added Green Badge parsing and rendering
+- `app/page.tsx` - Added Pro Features section
+
+---
+
 ## [2.0.0] - 2024-11-26
 
 ### Added

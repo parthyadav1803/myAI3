@@ -11,7 +11,10 @@ import {
   ArrowRight,
   CheckCircle,
   Zap,
-  Shield
+  Shield,
+  Handshake,
+  ShieldAlert,
+  Leaf
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -106,6 +109,55 @@ export default function LandingPage() {
       </section>
 
       <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-[#f97316]/10 text-[#f97316] px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <Zap className="w-4 h-4" />
+              Pro Features
+            </div>
+            <h2 className="text-3xl font-bold text-[#1e3a8a] mb-4">
+              Advanced Intelligence Suite
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Unlock powerful AI capabilities designed to give you a competitive edge in logistics.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#1e3a8a]/20 hover:border-[#1e3a8a]/40 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-[#1e3a8a]/10 rounded-xl flex items-center justify-center mb-6">
+                <Handshake className="w-7 h-7 text-[#1e3a8a]" />
+              </div>
+              <h3 className="font-bold text-xl text-[#1e3a8a] mb-3">Smart Negotiation Engine</h3>
+              <p className="text-gray-600">
+                Generate data-backed scripts to help you lower courier costs by comparing your current rates against regional competitors. Get leverage with real performance data.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#f97316]/20 hover:border-[#f97316]/40 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-[#f97316]/10 rounded-xl flex items-center justify-center mb-6">
+                <ShieldAlert className="w-7 h-7 text-[#f97316]" />
+              </div>
+              <h3 className="font-bold text-xl text-[#f97316] mb-3">RTO Risk Shield</h3>
+              <p className="text-gray-600">
+                Predict returns before shipping by analyzing weather conditions, package sensitivity, and historical route data. Get actionable mitigation recommendations.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-emerald-500/20 hover:border-emerald-500/40 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6">
+                <Leaf className="w-7 h-7 text-emerald-600" />
+              </div>
+              <h3 className="font-bold text-xl text-emerald-700 mb-3">Sustainability Intelligence</h3>
+              <p className="text-gray-600">
+                Automatically calculate carbon savings for every route and earn a verified "Green Shipper" badge. Make eco-friendly decisions without sacrificing efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
