@@ -1,0 +1,45 @@
+I need to upgrade the "Delivera" project into a multi-page SaaS application with rich content.
+
+Please execute the following changes. Ensure code is modular, comments are added, and `CHANGELOG.md` is updated.
+
+### 1. Architecture & Routing
+* **New Routes:** Create dedicated pages for:
+    * `/features` (Detailed breakdown of capabilities)
+    * `/pricing` (Dedicated pricing comparison page)
+    * `/testimonials` (Customer success stories)
+    * `/demo` (The existing Chat Interface)
+    * `/` (The Landing Page)
+* **Navbar Update:** Ensure links to "Features", "Pricing", and "Testimonials" navigate to these new separate pages, not scroll anchors.
+
+### 2. Content Expansion (Fill the Pages)
+Do not create empty pages. Populate them with the following detailed content:
+
+**A. Features Page (`/features`)**
+* *Header:* "Intelligence Across Every Mile."
+* *Section 1 - Smart Partner Selection:* Detail how the AI chooses between partners like Delhivery/Blue Dart based on specific regions (North/South) and vehicle types.
+* *Section 2 - Weather Guard Technology:* Explain how we use weather data (Fog, Rain, Heat) to predict delays before they happen.
+* *Section 3 - Expansion Modeling:* Explain the "Market Viability" feature that helps businesses test new regions before launching.
+* *Section 4 - Cost Optimization:* Explain how avoiding RTO (Return to Origin) saves money.
+
+**B. Pricing Page (`/pricing`)**
+* *Header:* "Simple Pricing for Indian SMBs."
+* *Structure:* Display only TWO tiers.
+    * **Free Plan:** ₹0/mo. "Ideal for startups." (Manual Queries, Historical Data Access, Community Support).
+    * **Pro Plan:** ₹999/mo. "For scaling brands." (Unlimited Queries, Real-time Weather Integration, API Access, Priority Support, Dedicated Account Manager).
+* *Comparison Table:* Below the cards, add a feature comparison checklist (Checkmarks vs Crosses).
+* *FAQ Section:* Add 3-4 common questions at the bottom (e.g., "Can I cancel anytime?", "Do you support API?").
+
+**C. Testimonials Page (`/testimonials`)**
+* *Header:* "Trusted by India's Fastest Growing Brands."
+* *Content:* Create a grid of **6 distinct testimonials** (Use dummy data but make it realistic).
+    * Include roles like "Ops Head", "Founder", "Logistics Manager".
+    * Industries: Fashion, Electronics, Perishables (Food), Handicrafts.
+    * *Example:* "Switching to Delivera for our fragile shipments in the North East reduced breakage by 40%."
+
+### 3. Chat Interface Logic (`/demo`)
+* **Web Search Trigger:** If the AI recommends a specific partner (e.g., Delhivery, Blue Dart), it MUST search specifically for their **Price Calculator** or **Official Landing Page**.
+* **Strict Output Format:** The AI must append exactly: *"You can calculate exact rates here: [Link]"*.
+* **UI:** Ensure the chat interface is clean and professional.
+
+### 4. Branding (Delivera)
+* Ensure the Logo (SVG) and color scheme (Navy Blue `#1e3a8a` & Saffron Orange `#f97316`) are consistent across all new pages.

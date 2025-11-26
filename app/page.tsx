@@ -1,255 +1,194 @@
-"use client";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import * as z from "zod";
-
-import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { useChat } from "@ai-sdk/react";
-import { ArrowUp, Eraser, Loader2, Plus, PlusIcon, Square } from "lucide-react";
-import { MessageWall } from "@/components/messages/message-wall";
-import { ChatHeader } from "@/app/parts/chat-header";
-import { ChatHeaderBlock } from "@/app/parts/chat-header";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UIMessage } from "ai";
-import { useEffect, useState, useRef } from "react";
-import { AI_NAME, CLEAR_CHAT_TEXT, OWNER_NAME, WELCOME_MESSAGE } from "@/config";
-import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { AI_NAME, OWNER_NAME } from "@/config";
+import { 
+  Truck, 
+  Cloud, 
+  MapPin, 
+  TrendingDown, 
+  ArrowRight,
+  CheckCircle,
+  Zap,
+  Shield
+} from "lucide-react";
 
-const formSchema = z.object({
-  message: z
-    .string()
-    .min(1, "Message cannot be empty.")
-    .max(2000, "Message must be at most 2000 characters."),
-});
-
-const STORAGE_KEY = 'chat-messages';
-
-type StorageData = {
-  messages: UIMessage[];
-  durations: Record<string, number>;
-};
-
-const loadMessagesFromStorage = (): { messages: UIMessage[]; durations: Record<string, number> } => {
-  if (typeof window === 'undefined') return { messages: [], durations: {} };
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return { messages: [], durations: {} };
-
-    const parsed = JSON.parse(stored);
-    return {
-      messages: parsed.messages || [],
-      durations: parsed.durations || {},
-    };
-  } catch (error) {
-    console.error('Failed to load messages from localStorage:', error);
-    return { messages: [], durations: {} };
-  }
-};
-
-const saveMessagesToStorage = (messages: UIMessage[], durations: Record<string, number>) => {
-  if (typeof window === 'undefined') return;
-  try {
-    const data: StorageData = { messages, durations };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (error) {
-    console.error('Failed to save messages to localStorage:', error);
-  }
-};
-
-export default function Chat() {
-  const [isClient, setIsClient] = useState(false);
-  const [durations, setDurations] = useState<Record<string, number>>({});
-  const welcomeMessageShownRef = useRef<boolean>(false);
-
-  const stored = typeof window !== 'undefined' ? loadMessagesFromStorage() : { messages: [], durations: {} };
-  const [initialMessages] = useState<UIMessage[]>(stored.messages);
-
-  const { messages, sendMessage, status, stop, setMessages } = useChat({
-    messages: initialMessages,
-  });
-
-  useEffect(() => {
-    setIsClient(true);
-    setDurations(stored.durations);
-    setMessages(stored.messages);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      saveMessagesToStorage(messages, durations);
-    }
-  }, [durations, messages, isClient]);
-
-  const handleDurationChange = (key: string, duration: number) => {
-    setDurations((prevDurations) => {
-      const newDurations = { ...prevDurations };
-      newDurations[key] = duration;
-      return newDurations;
-    });
-  };
-
-  useEffect(() => {
-    if (isClient && initialMessages.length === 0 && !welcomeMessageShownRef.current) {
-      const welcomeMessage: UIMessage = {
-        id: `welcome-${Date.now()}`,
-        role: "assistant",
-        parts: [
-          {
-            type: "text",
-            text: WELCOME_MESSAGE,
-          },
-        ],
-      };
-      setMessages([welcomeMessage]);
-      saveMessagesToStorage([welcomeMessage], {});
-      welcomeMessageShownRef.current = true;
-    }
-  }, [isClient, initialMessages.length, setMessages]);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      message: "",
-    },
-  });
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    sendMessage({ text: data.message });
-    form.reset();
-  }
-
-  function clearChat() {
-    const newMessages: UIMessage[] = [];
-    const newDurations = {};
-    setMessages(newMessages);
-    setDurations(newDurations);
-    saveMessagesToStorage(newMessages, newDurations);
-    toast.success("Chat cleared");
-  }
-
+export default function LandingPage() {
   return (
-    <div className="flex h-screen items-center justify-center font-sans dark:bg-black">
-      <main className="w-full dark:bg-black h-screen relative">
-        <div className="fixed top-0 left-0 right-0 z-50 bg-linear-to-b from-background via-background/50 to-transparent dark:bg-black overflow-visible pb-16">
-          <div className="relative overflow-visible">
-            <ChatHeader>
-              <ChatHeaderBlock />
-              <ChatHeaderBlock className="justify-center items-center">
-                <Avatar
-                  className="size-8 ring-1 ring-primary"
-                >
-                  <AvatarImage src="/logo.png" />
-                  <AvatarFallback>
-                    <Image src="/logo.png" alt="Logo" width={36} height={36} />
-                  </AvatarFallback>
-                </Avatar>
-                <p className="tracking-tight">Chat with {AI_NAME}</p>
-              </ChatHeaderBlock>
-              <ChatHeaderBlock className="justify-end">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="cursor-pointer"
-                  onClick={clearChat}
-                >
-                  <Plus className="size-4" />
-                  {CLEAR_CHAT_TEXT}
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-[#f97316]/10 text-[#f97316] px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Zap className="w-4 h-4" />
+              AI-Powered Logistics Intelligence
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1e3a8a] leading-tight mb-6">
+              Smarter Shipping Decisions for{" "}
+              <span className="text-[#f97316]">Indian SMBs</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              {AI_NAME} uses AI to help you choose the right logistics partner, predict delays before they happen, and reduce shipping costs by up to 30%.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/demo">
+                <Button size="lg" className="bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white px-8">
+                  Try {AI_NAME} Free
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-              </ChatHeaderBlock>
-            </ChatHeader>
-          </div>
-        </div>
-        <div className="h-screen overflow-y-auto px-5 py-4 w-full pt-[88px] pb-[150px]">
-          <div className="flex flex-col items-center justify-end min-h-full">
-            {isClient ? (
-              <>
-                <MessageWall messages={messages} status={status} durations={durations} onDurationChange={handleDurationChange} />
-                {status === "submitted" && (
-                  <div className="flex justify-start max-w-3xl w-full">
-                    <Loader2 className="size-4 animate-spin text-muted-foreground" />
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="flex justify-center max-w-2xl w-full">
-                <Loader2 className="size-4 animate-spin text-muted-foreground" />
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-linear-to-t from-background via-background/50 to-transparent dark:bg-black overflow-visible pt-13">
-          <div className="w-full px-5 pt-5 pb-1 items-center flex justify-center relative overflow-visible">
-            <div className="message-fade-overlay" />
-            <div className="max-w-3xl w-full">
-              <form id="chat-form" onSubmit={form.handleSubmit(onSubmit)}>
-                <FieldGroup>
-                  <Controller
-                    name="message"
-                    control={form.control}
-                    render={({ field, fieldState }) => (
-                      <Field data-invalid={fieldState.invalid}>
-                        <FieldLabel htmlFor="chat-form-message" className="sr-only">
-                          Message
-                        </FieldLabel>
-                        <div className="relative h-13">
-                          <Input
-                            {...field}
-                            id="chat-form-message"
-                            className="h-15 pr-15 pl-5 bg-card rounded-[20px]"
-                            placeholder="Type your message here..."
-                            disabled={status === "streaming"}
-                            aria-invalid={fieldState.invalid}
-                            autoComplete="off"
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" && !e.shiftKey) {
-                                e.preventDefault();
-                                form.handleSubmit(onSubmit)();
-                              }
-                            }}
-                          />
-                          {(status == "ready" || status == "error") && (
-                            <Button
-                              className="absolute right-3 top-3 rounded-full"
-                              type="submit"
-                              disabled={!field.value.trim()}
-                              size="icon"
-                            >
-                              <ArrowUp className="size-4" />
-                            </Button>
-                          )}
-                          {(status == "streaming" || status == "submitted") && (
-                            <Button
-                              className="absolute right-2 top-2 rounded-full"
-                              size="icon"
-                              onClick={() => {
-                                stop();
-                              }}
-                            >
-                              <Square className="size-4" />
-                            </Button>
-                          )}
-                        </div>
-                      </Field>
-                    )}
-                  />
-                </FieldGroup>
-              </form>
+              </Link>
+              <Link href="/features">
+                <Button size="lg" variant="outline" className="border-[#1e3a8a] text-[#1e3a8a] hover:bg-[#1e3a8a]/5 px-8">
+                  Explore Features
+                </Button>
+              </Link>
             </div>
           </div>
-          <div className="w-full px-5 py-3 items-center flex justify-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {OWNER_NAME}&nbsp;<Link href="/terms" className="underline">Terms of Use</Link>&nbsp;Powered by&nbsp;<Link href="https://ringel.ai/" className="underline">Ringel.AI</Link>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#1e3a8a] mb-4">
+              Why Choose {AI_NAME}?
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Built specifically for Indian logistics challenges, from weather disruptions to regional partner selection.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#1e3a8a]/10 rounded-lg flex items-center justify-center mb-4">
+                <Truck className="w-6 h-6 text-[#1e3a8a]" />
+              </div>
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">Smart Partner Selection</h3>
+              <p className="text-gray-600 text-sm">
+                AI recommends the best courier partner based on region, shipment type, and historical performance.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#f97316]/10 rounded-lg flex items-center justify-center mb-4">
+                <Cloud className="w-6 h-6 text-[#f97316]" />
+              </div>
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">Weather Guard</h3>
+              <p className="text-gray-600 text-sm">
+                Predict delays from fog, rain, or extreme heat before they impact your shipments.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#1e3a8a]/10 rounded-lg flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-[#1e3a8a]" />
+              </div>
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">Expansion Modeling</h3>
+              <p className="text-gray-600 text-sm">
+                Test market viability in new regions before committing resources.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#f97316]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingDown className="w-6 h-6 text-[#f97316]" />
+              </div>
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">RTO Reduction</h3>
+              <p className="text-gray-600 text-sm">
+                Minimize Return to Origin costs with predictive address verification and delivery optimization.
+              </p>
+            </div>
           </div>
         </div>
-      </main>
-    </div >
+      </section>
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-[#1e3a8a] mb-6">
+                Built for Indian Logistics Challenges
+              </h2>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-[#f97316] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-medium text-gray-900">Region-Specific Intelligence</h4>
+                    <p className="text-gray-600 text-sm">Understands North vs South India logistics differences, hill station accessibility, and metro vs tier-2 city dynamics.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-[#f97316] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-medium text-gray-900">Multi-Partner Integration</h4>
+                    <p className="text-gray-600 text-sm">Compare Delhivery, Blue Dart, DTDC, Ecom Express, and more in real-time.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-[#f97316] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-medium text-gray-900">Festival Season Ready</h4>
+                    <p className="text-gray-600 text-sm">Peak season capacity planning for Diwali, Big Billion Days, and other high-volume periods.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-[#f97316] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-medium text-gray-900">COD & Prepaid Optimization</h4>
+                    <p className="text-gray-600 text-sm">Smart recommendations for Cash on Delivery vs Prepaid based on region and customer behavior.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-[#1e3a8a] to-[#1e3a8a]/80 rounded-2xl p-8 text-white">
+              <div className="flex items-center gap-2 mb-6">
+                <Shield className="w-6 h-6" />
+                <span className="font-semibold">Trusted by 500+ SMBs</span>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-4xl font-bold mb-1">30%</div>
+                  <div className="text-sm text-gray-300">Average Cost Reduction</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-1">40%</div>
+                  <div className="text-sm text-gray-300">Lower RTO Rate</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-1">2x</div>
+                  <div className="text-sm text-gray-300">Faster Decisions</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-1">99%</div>
+                  <div className="text-sm text-gray-300">Uptime SLA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#1e3a8a]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Optimize Your Logistics?
+          </h2>
+          <p className="text-gray-300 mb-8">
+            Start making smarter shipping decisions today. No credit card required.
+          </p>
+          <Link href="/demo">
+            <Button size="lg" className="bg-[#f97316] hover:bg-[#f97316]/90 text-white px-8">
+              Get Started Free
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   );
 }

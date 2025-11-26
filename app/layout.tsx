@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MyAI3",
-  description: "MyAI3",
+  title: "Delivera - AI-Powered Logistics Intelligence for Indian SMBs",
+  description: "Make smarter shipping decisions with Delivera. AI-powered logistics intelligence that helps you choose the right partners, predict delays, and reduce costs.",
+  keywords: ["logistics", "shipping", "India", "SMB", "AI", "Delhivery", "Blue Dart", "DTDC", "e-commerce"],
 };
 
 export default function RootLayout({
@@ -28,6 +30,7 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

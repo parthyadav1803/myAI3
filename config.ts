@@ -33,7 +33,15 @@ export const DATE_AND_TIME = getDateAndTime();
 export const AI_NAME = "Delivera";
 export const OWNER_NAME = "Parth and Hriday";
 
-export const WELCOME_MESSAGE = `Hello! I'm ${AI_NAME}, an AI assistant created by ${OWNER_NAME}.`
+export const WELCOME_MESSAGE = `Hello! I'm ${AI_NAME}, your AI-powered logistics assistant created by ${OWNER_NAME}.
+
+I can help you with:
+- Choosing the best logistics partner (Delhivery, Blue Dart, DTDC, etc.)
+- Predicting weather-related delivery delays
+- Reducing RTO (Return to Origin) costs
+- Analyzing new market expansion viability
+
+What logistics challenge can I help you solve today?`
 
 export const CLEAR_CHAT_TEXT = "New";
 
