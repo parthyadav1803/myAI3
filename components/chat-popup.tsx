@@ -23,7 +23,7 @@ const formSchema = z.object({
     .max(2000, "Message must be at most 2000 characters."),
 });
 
-const POPUP_STORAGE_KEY = 'chat-popup-messages';
+const STORAGE_KEY = 'chat-messages';
 
 type StorageData = {
   messages: UIMessage[];
@@ -33,7 +33,7 @@ type StorageData = {
 const loadMessagesFromStorage = (): { messages: UIMessage[]; durations: Record<string, number> } => {
   if (typeof window === 'undefined') return { messages: [], durations: {} };
   try {
-    const stored = localStorage.getItem(POPUP_STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return { messages: [], durations: {} };
     const parsed = JSON.parse(stored);
     return {
@@ -50,7 +50,7 @@ const saveMessagesToStorage = (messages: UIMessage[], durations: Record<string, 
   if (typeof window === 'undefined') return;
   try {
     const data: StorageData = { messages, durations };
-    localStorage.setItem(POPUP_STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (error) {
     console.error('Failed to save messages to localStorage:', error);
   }

@@ -103,10 +103,10 @@ delivera/
 A floating chatbot popup appears on all pages (except /demo):
 - **Auto-opens**: 1.5 seconds after page load as a nudge to try Delivera
 - **Minimize**: Collapses to a compact bar showing "Delivera" with expand/close buttons
-- **Expand**: Opens full-screen chat at /demo page
+- **Expand**: Opens full-screen chat at /demo page (continues same conversation)
 - **Close**: Hides popup, shows chat bubble icon to reopen
 - **Full functionality**: Same AI capabilities as the main demo chatbot
-- **Separate storage**: Uses 'chat-popup-messages' localStorage key
+- **Shared storage**: Uses 'chat-messages' localStorage key (same as demo page)
 
 Components:
 - `components/chat-popup.tsx` - Main popup component
