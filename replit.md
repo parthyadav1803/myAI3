@@ -92,6 +92,26 @@ delivera/
 - Compares Diesel Truck (105g/km) vs EV Van (0g/km)
 - Renders visual GreenBadge component with carbon savings
 
+### Module 4: International Handling
+- Triggered by: Shipping queries to destinations outside India (USA, UK, Dubai, etc.)
+- Skips internal India-only database
+- Displays mandatory disclaimer about domestic optimization
+- Uses web search for international rates from DHL, FedEx, Aramex, etc.
+
+## Mini Chat Popup
+
+A floating chatbot popup appears on all pages (except /demo):
+- **Auto-opens**: 1.5 seconds after page load as a nudge to try Delivera
+- **Minimize**: Collapses to a compact bar showing "Delivera" with expand/close buttons
+- **Expand**: Opens full-screen chat at /demo page
+- **Close**: Hides popup, shows chat bubble icon to reopen
+- **Full functionality**: Same AI capabilities as the main demo chatbot
+- **Separate storage**: Uses 'chat-popup-messages' localStorage key
+
+Components:
+- `components/chat-popup.tsx` - Main popup component
+- `components/chat-popup-wrapper.tsx` - Client wrapper for layout integration
+
 ## Key Files for Customization
 
 ### config.ts
@@ -111,9 +131,16 @@ delivera/
 - **Build Command**: `npm run build`
 - **Run Command**: `npm start`
 
-## Recent Changes (November 26, 2025)
+## Recent Changes (November 27, 2025)
 
-### Version 2.1.0
+### Version 2.2.0
+- Added Mini Chat Popup on all pages (auto-opens after 1.5s)
+- Popup has minimize, expand, and close functionality
+- Added comprehensive Terms of Service page at /terms
+- Added Module 4: International Handling for out-of-India shipping queries
+- Updated footer link to "Terms & Disclaimer"
+
+### Version 2.1.0 (November 26, 2025)
 - Added Advanced Intelligence Suite with 3 modules
 - Created GreenBadge component for sustainability
 - Implemented chat message parsing for badge rendering
