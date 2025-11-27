@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/testimonials", label: "Testimonials" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export function Navbar() {
@@ -45,9 +46,9 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/demo">
+            <Link href="/login">
               <Button className="bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white">
-                Try Demo
+                Login / Sign Up
               </Button>
             </Link>
           </div>
@@ -81,9 +82,9 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="/demo" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white">
-                  Try Demo
+                  Login / Sign Up
                 </Button>
               </Link>
             </div>

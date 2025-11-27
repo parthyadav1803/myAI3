@@ -48,6 +48,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/contact" className="hover:text-[#f97316] transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/terms" className="hover:text-[#f97316] transition-colors">
                   Terms & Disclaimer
                 </Link>

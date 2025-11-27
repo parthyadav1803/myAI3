@@ -57,6 +57,10 @@ delivera/
 │   ├── features/page.tsx      # Features breakdown
 │   ├── pricing/page.tsx       # Pricing tiers
 │   ├── testimonials/page.tsx  # Customer stories
+│   ├── contact/page.tsx       # Contact Us form
+│   ├── login/page.tsx         # Login page
+│   ├── signup/page.tsx        # Sign Up page
+│   ├── terms/page.tsx         # Terms of Service
 │   └── layout.tsx             # Root layout
 ├── components/
 │   ├── ai-elements/           # AI-specific UI components
@@ -132,6 +136,13 @@ Components:
 - **Run Command**: `npm start`
 
 ## Recent Changes (November 27, 2025)
+
+### Version 2.3.0
+- Added Contact Us page at /contact with form fields (Name, Email, Contact Number, Requirements)
+- Added Login page at /login with Email/Password and sign-up link
+- Added Sign Up page at /signup with Full Name, Email, Password, Confirm Password
+- Replaced "Try Demo" button with "Login / Sign Up" in navbar
+- Added "Contact Us" link to navbar and footer navigation
 
 ### Version 2.2.0
 - Added Mini Chat Popup on all pages (auto-opens after 1.5s)
