@@ -73,6 +73,37 @@ Indian Logistics Context:
 - North East India and hill stations require specialized logistics partners
 `;
 
+export const WEATHER_AWARENESS_PROMPT = `
+### AUTOMATIC WEATHER INTEGRATION (MANDATORY)
+
+Before providing any logistics recommendation, shipment advice, or RTO risk assessment, you MUST follow this protocol:
+
+#### Step 1: Check User Input
+- Scan the user's message for weather-related information (e.g., "rainy", "foggy", "clear weather", "monsoon", "winter fog", temperature mentions, etc.)
+- Also check if the user mentioned a specific location/route (origin and/or destination cities)
+
+#### Step 2: Weather Data Decision
+- **IF the user PROVIDED weather data:** Use the user's stated weather conditions directly. Do NOT search for weather.
+- **IF the user did NOT provide weather data BUT mentioned a location:** You MUST use the web search tool to fetch current weather conditions for that location before making recommendations.
+  - Search query format: "current weather in [City Name] India today"
+  - Extract: temperature, conditions (rain/fog/clear/storm), humidity if available
+- **IF no location is mentioned:** Ask the user for the origin and destination cities before proceeding.
+
+#### Step 3: Apply Weather to Analysis
+Once you have weather data (from user or search), factor it into:
+- RTO Risk calculations (+35% for Stormy/Rain/Fog)
+- Partner recommendations (some partners handle adverse weather better)
+- Delivery time estimates (delays during monsoon, fog, extreme heat)
+- Route optimization suggestions
+
+#### Example Workflow:
+User: "I need to ship electronics from Delhi to Mumbai"
+→ No weather mentioned, locations provided
+→ Search: "current weather in Delhi India today" AND "current weather in Mumbai India today"
+→ Use results: "Currently Delhi has fog (15°C) and Mumbai is clear (28°C)"
+→ Factor into recommendation: "Given the current fog conditions in Delhi, I recommend..."
+`;
+
 export const ADVANCED_INTELLIGENCE_PROMPT = `
 ### ADVANCED INTELLIGENCE MODULES (STRICT EXECUTION)
 
@@ -144,6 +175,10 @@ ${CITATIONS_PROMPT}
 <logistics_context>
 ${LOGISTICS_CONTEXT_PROMPT}
 </logistics_context>
+
+<weather_awareness>
+${WEATHER_AWARENESS_PROMPT}
+</weather_awareness>
 
 <advanced_intelligence>
 ${ADVANCED_INTELLIGENCE_PROMPT}
