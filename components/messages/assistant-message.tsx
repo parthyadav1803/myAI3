@@ -31,7 +31,7 @@ export function AssistantMessage({ message, status, isLastMessage, durations, on
                     if (part.type === "text") {
                         const { cleanedText, savedKg } = parseGreenBadge(part.text);
                         return (
-                            <div key={`${message.id}-${i}`}>
+                            <div key={`${message.id}-${i}`} className="bg-[#eff6ff] border border-[#bfdbfe] rounded-[20px] px-4 py-3">
                                 <Response>{cleanedText}</Response>
                                 {savedKg !== null && <GreenBadge savedKg={savedKg} />}
                             </div>
