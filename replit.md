@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Delivera is an AI-powered logistics intelligence platform for Indian SMBs built with Next.js 16, featuring:
+Delivera is an AI-powered logistics intelligence platform for Indian MSMEs built with Next.js 16, featuring:
 - Smart logistics partner recommendations (Delhivery, Blue Dart, DTDC, etc.)
 - Weather-related delivery predictions
 - RTO risk assessment and reduction

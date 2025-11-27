@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -22,16 +23,26 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 min-h-[600px] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero-highway.jpg"
+            alt="Scenic highway representing logistics and delivery"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white" />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#f97316]/10 text-[#f97316] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#f97316]/10 text-[#f97316] px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
               <Zap className="w-4 h-4" />
               AI-Powered Logistics Intelligence
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1e3a8a] leading-tight mb-6">
               Smarter Shipping Decisions for{" "}
-              <span className="text-[#f97316]">Indian SMBs</span>
+              <span className="text-[#f97316]">Indian MSMEs</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               {AI_NAME} uses AI to help you choose the right logistics partner, predict delays before they happen, and reduce shipping costs by up to 30%.
@@ -44,7 +55,7 @@ export default function LandingPage() {
                 </Button>
               </Link>
               <Link href="/features">
-                <Button size="lg" variant="outline" className="border-[#1e3a8a] text-[#1e3a8a] hover:bg-[#1e3a8a]/5 px-8">
+                <Button size="lg" variant="outline" className="border-[#1e3a8a] text-[#1e3a8a] hover:bg-[#1e3a8a]/5 px-8 bg-white/50 backdrop-blur-sm">
                   Explore Features
                 </Button>
               </Link>
@@ -91,7 +102,7 @@ export default function LandingPage() {
               </div>
               <h3 className="font-semibold text-lg text-gray-900 mb-2">Expansion Modeling</h3>
               <p className="text-gray-600 text-sm">
-                Test market viability in new regions before committing resources.
+                Testing logistics viability before committing resources.
               </p>
             </div>
 
@@ -198,7 +209,7 @@ export default function LandingPage() {
             <div className="bg-gradient-to-br from-[#1e3a8a] to-[#1e3a8a]/80 rounded-2xl p-8 text-white">
               <div className="flex items-center gap-2 mb-6">
                 <Shield className="w-6 h-6" />
-                <span className="font-semibold">Trusted by 500+ SMBs</span>
+                <span className="font-semibold">Trusted by 500+ MSMEs</span>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>

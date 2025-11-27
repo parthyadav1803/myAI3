@@ -14,7 +14,7 @@ export function Footer() {
               <span className="font-bold text-xl">{AI_NAME}</span>
             </div>
             <p className="text-gray-300 text-sm max-w-md">
-              AI-powered logistics intelligence for Indian SMBs. Make smarter shipping decisions with real-time insights.
+              AI-powered logistics intelligence for Indian MSMEs. Make smarter shipping decisions with real-time insights.
             </p>
           </div>
 

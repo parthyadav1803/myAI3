@@ -74,7 +74,7 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: "500+", label: "SMBs Trust Us" },
+  { value: "500+", label: "MSMEs Trust Us" },
   { value: "30%", label: "Avg Cost Reduction" },
   { value: "40%", label: "Lower RTO Rate" },
   { value: "4.9/5", label: "Customer Rating" },
@@ -183,7 +183,7 @@ export default function TestimonialsPage() {
             Ready to Join These Success Stories?
           </h2>
           <p className="text-gray-300 mb-8">
-            Start your free trial today and see why 500+ SMBs trust {AI_NAME} for their logistics intelligence.
+            Start your free trial today and see why 500+ MSMEs trust {AI_NAME} for their logistics intelligence.
           </p>
           <Link href="/demo">
             <Button size="lg" className="bg-[#f97316] hover:bg-[#f97316]/90 text-white px-8">

@@ -112,7 +112,7 @@ export default function PricingPage() {
               Transparent Pricing
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-[#1e3a8a] leading-tight mb-6">
-              Simple Pricing for Indian SMBs
+              Simple Pricing for Indian MSMEs
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Start free, upgrade when you're ready. No hidden fees, no long-term contracts.

@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Delivera - AI-Powered Logistics Intelligence for Indian SMBs",
+  title: "Delivera - AI-Powered Logistics Intelligence for Indian MSMEs",
   description: "Make smarter shipping decisions with Delivera. AI-powered logistics intelligence that helps you choose the right partners, predict delays, and reduce costs.",
-  keywords: ["logistics", "shipping", "India", "SMB", "AI", "Delhivery", "Blue Dart", "DTDC", "e-commerce"],
+  keywords: ["logistics", "shipping", "India", "MSME", "AI", "Delhivery", "Blue Dart", "DTDC", "e-commerce"],
 };
 
 export default function RootLayout({
