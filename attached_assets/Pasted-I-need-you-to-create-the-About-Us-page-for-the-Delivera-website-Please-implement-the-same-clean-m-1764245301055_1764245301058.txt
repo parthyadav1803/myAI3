@@ -1,0 +1,43 @@
+I need you to create the About Us page for the Delivera website.
+
+Please implement the same clean, modern layout which you have been following till now with the following 4 Sections. Use the exact text content provided below for each section.
+
+SECTION 1: HERO & VISION
+
+Headline: The Intelligence Behind Your Logistics
+Sub-headline: Democratizing enterprise-grade supply chain intelligence for India's 63 million MSMEs.
+
+Body Copy:
+At Delivera, we believe that data shouldn't be a luxury reserved for logistics giants. We are the First AI Logistics Strategist built specifically for the Indian market. Born from the chaos of unorganized last-mile delivery, we exist to bring order, transparency, and predictability to small businesses.
+
+We are not a courier company; we are your Intelligence Partner. We sit between you and the logistics provider, using a brain of 25,000+ data points to answer the critical questions that make or break your profit margins: "Is this route safe?", "Is this price fair?", and "Will this package arrive on time?"
+
+Core Intent: To turn your logistics from a cost center into a competitive advantage.
+
+SECTION 2: WHO WE SERVE
+
+Headline: Built for the Builders
+Sub-text: Focusing on B2C & D2C Brands, Independent Sellers, and Small Manufacturers.
+
+Body Copy (Narrative):
+We serve the B2C brands and D2C disruptors who drive India's economy.
+
+Imagine a founder in Jaipur shipping handicrafts to Assam. Every package is a risk—fog delays, hidden costs, and the dreaded RTO. For too long, small businesses have flown blind.
+
+Delivera exists to change this story.
+
+We replace "gut feeling" with enterprise-grade data. We give you the power to negotiate like a giant, predict delays before they happen, and ship with absolute confidence. We handle the complexity of the last mile, so you can focus on building the next big thing.
+
+SECTION 3: PRICING
+
+Headline: Simple, Transparent Pricing
+Copy:
+We believe in accessible intelligence. Whether you are just starting out with 10 shipments a month or scaling a D2C brand with 10,000, we have a plan that fits your journey. No hidden fees, just pure ROI.
+
+Action: [Button: "Check Our Pricing Plans"] (Link this button to the /pricing page)
+
+SECTION 4: OUR PRESENCE
+
+Headline: Covering Every Mile
+Copy:
+We operate a Pan-India Intelligence Network covering everything from Tier-1 Metros to Tier-3 Hinterlands. We are rapidly expanding our predictive models to cover Global Cross-Border Trade, ensuring that wherever your package goes, our intelligence goes with it.

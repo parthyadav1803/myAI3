@@ -57,6 +57,7 @@ delivera/
 │   ├── features/page.tsx      # Features breakdown
 │   ├── pricing/page.tsx       # Pricing tiers
 │   ├── testimonials/page.tsx  # Customer stories
+│   ├── about/page.tsx         # About Us page (4 sections)
 │   ├── contact/page.tsx       # Contact Us form
 │   ├── login/page.tsx         # Login page
 │   ├── signup/page.tsx        # Sign Up page
@@ -136,6 +137,14 @@ Components:
 - **Run Command**: `npm start`
 
 ## Recent Changes (November 27, 2025)
+
+### Version 2.4.0
+- Added About Us page at /about with 4 sections:
+  - Hero & Vision: "The Intelligence Behind Your Logistics"
+  - Who We Serve: "Built for the Builders" - B2C/D2C brands focus
+  - Pricing: "Simple, Transparent Pricing" with CTA to /pricing
+  - Our Presence: "Covering Every Mile" - Pan-India coverage stats
+- Added "About Us" link to navbar and footer navigation
 
 ### Version 2.3.0
 - Added Contact Us page at /contact with form fields (Name, Email, Contact Number, Requirements)
