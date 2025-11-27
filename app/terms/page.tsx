@@ -1,207 +1,145 @@
-import { ArrowLeftIcon } from "lucide-react";
-import Link from "next/link";
-import { OWNER_NAME } from "@/config";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { AI_NAME, OWNER_NAME } from "@/config";
 
-export default function Terms() {
-    return (
-        <div className="w-full flex justify-center p-10">
-            <div className="w-full max-w-screen-md space-y-6">
-                <Link
-                    href="/"
-                    className="flex items-center gap-2 text-gray-500 hover:text-gray-700 underline"
-                >
-                    <ArrowLeftIcon className="w-4 h-4" />
-                    Back to Chatbot
-                </Link>
-                <h1 className="text-3xl font-bold">MyAI3</h1>
-                <h2 className="text-2xl font-semibold">Terms of Use / Disclaimer</h2>
+export default function TermsPage() {
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
-                <p className="text-gray-700">
-                    The following terms of use govern access to and use of the MyAI3
-                    Assistant ("AI Chatbot"), an artificial intelligence tool provided by
-                    {OWNER_NAME} ("I", "me", or "myself"). By engaging with the AI
-                    Chatbot, you agree to these terms. If you do not agree, you may not
-                    use the AI Chatbot.
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      
+      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-3xl font-bold text-[#1e3a8a] mb-2">
+            Terms of Service & AI Disclaimer
+          </h1>
+          <p className="text-gray-500 mb-8">
+            Last Updated: {currentDate}
+          </p>
+
+          <div className="prose prose-gray max-w-none">
+            <section className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Acceptance of Terms</h2>
+              <p className="text-gray-700 leading-relaxed">
+                By accessing and using "{AI_NAME}" (the "Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this Service.
+              </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">2. Nature of the Service (AI Disclaimer)</h2>
+              
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">2.1. Artificial Intelligence</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {AI_NAME} utilizes Large Language Models (LLMs) and probabilistic data analysis. You acknowledge that the Service is an automated AI system and <strong className="text-gray-900">not a human logistics expert</strong>.
                 </p>
+              </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">General Information</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Provider and Purpose:</span> The
-                            AI Chatbot is a tool developed and maintained by {OWNER_NAME}. It
-                            is intended solely to assist users with questions and coursework
-                            related to courses taught by {OWNER_NAME}. The AI Chatbot is not
-                            affiliated with, endorsed by, or operated by the course provider.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Third-Party Involvement:</span>{" "}
-                            The AI Chatbot utilizes multiple third-party platforms and
-                            vendors, some of which operate outside the United States. Your
-                            inputs may be transmitted, processed, and stored by these
-                            third-party systems. As such, confidentiality, security, and privacy
-                            cannot be guaranteed, and data transmission may be inherently
-                            insecure and subject to interception.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Guarantee of Accuracy:</span>{" "}
-                            The AI Chatbot is designed to provide helpful and relevant
-                            responses but may deliver inaccurate, incomplete, or outdated
-                            information. Users are strongly encouraged to independently verify
-                            any information before relying on it for decisions or actions.
-                        </li>
-                    </ol>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">2.2. Accuracy</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  While we strive for accuracy based on our dataset of 25,000 records, the Service may produce outputs that are inaccurate, incomplete, or "hallucinated." The Service may make errors in reasoning or math.
+                </p>
+              </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Liability</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Use at Your Own Risk:</span> The
-                            AI Chatbot is provided on an "as-is" and "as-available" basis. To
-                            the fullest extent permitted by law:
-                            <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                                <li>
-                                    {OWNER_NAME} disclaims all warranties, express or implied,
-                                    including but not limited to warranties of merchantability,
-                                    fitness for a particular purpose, and non-infringement.
-                                </li>
-                                <li>
-                                    {OWNER_NAME} is not liable for any errors, inaccuracies, or
-                                    omissions in the information provided by the AI Chatbot.
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">
-                                No Responsibility for Damages:
-                            </span>{" "}
-                            Under no circumstances shall {OWNER_NAME}, his collaborators,
-                            partners, affiliated entities, or representatives be liable for
-                            any direct, indirect, incidental, consequential, special, or
-                            punitive damages arising out of or in connection with the use of
-                            the AI Chatbot.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">
-                                Modification or Discontinuation:
-                            </span>{" "}
-                            I reserve the right to modify, suspend, or discontinue the AI
-                            Chatbot's functionalities at any time without notice.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Future Fees:</span> While the AI
-                            Chatbot is currently provided free of charge, I reserve the right
-                            to implement a fee for its use at any time.
-                        </li>
-                    </ol>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">2.3. Verification</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  You agree to independently verify all logistics recommendations, shipping rates, and partner capabilities before making any financial or business decisions.
+                </p>
+              </div>
+            </section>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">User Responsibilities</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Eligibility:</span> Use of the AI
-                            Chatbot is restricted to individuals aged 18 or older.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Prohibited Conduct:</span> By
-                            using the AI Chatbot, you agree not to:
-                            <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                                <li>Post or transmit content that is defamatory, offensive, intimidating, illegal, racist, discriminatory, obscene, or otherwise inappropriate.</li>
-                                <li>Use the AI Chatbot to engage in unlawful or unethical activities.</li>
-                                <li>Attempt to compromise the security or functionality of the AI Chatbot</li>
-                                <li>Copy, distribute, modify, reverse engineer, decompile, or extract the source code of the AI Chatbot without explicit written consent.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
+            <section className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">3. Limitation of Liability (Crucial)</h2>
+              
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">3.1. "As-Is" Basis</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The owners and developers of {AI_NAME} make no representations or warranties of any kind, express or implied, regarding the operation of the Service or the information, content, or materials included therein.
+                </p>
+              </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Data Privacy and Security</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Privacy Guarantee:</span> The
-                            AI Chatbot does not guarantee privacy, confidentiality, or
-                            security of the information you provide. Conversations may be
-                            reviewed by {OWNER_NAME}, collaborators, partners, or affiliated
-                            entities for purposes such as improving the AI Chatbot, developing
-                            course materials, and conducting research.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Public Information:</span> Any
-                            information you provide through the AI Chatbot is treated as
-                            public.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Data Transmission:</span> Inputs
-                            may be transmitted to and processed by third-party services.
-                        </li>
-                    </ol>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">3.2. Exclusion of Damages</h3>
+                <p className="text-gray-700 leading-relaxed mb-3">
+                  To the fullest extent permitted by law, the owners of {AI_NAME} shall <strong className="text-gray-900">NOT be liable</strong> for any direct, indirect, incidental, special, or consequential damages resulting from:
+                </p>
+                <ul className="list-none space-y-2 ml-4">
+                  <li className="text-gray-700 flex items-start gap-2">
+                    <span className="text-[#1e3a8a] font-medium">a)</span>
+                    The use or inability to use the Service.
+                  </li>
+                  <li className="text-gray-700 flex items-start gap-2">
+                    <span className="text-[#1e3a8a] font-medium">b)</span>
+                    Cost of procurement of substitute goods/services.
+                  </li>
+                  <li className="text-gray-700 flex items-start gap-2">
+                    <span className="text-[#1e3a8a] font-medium">c)</span>
+                    Lost shipments, delayed deliveries, or "Return to Origin" (RTO) losses.
+                  </li>
+                  <li className="text-gray-700 flex items-start gap-2">
+                    <span className="text-[#1e3a8a] font-medium">d)</span>
+                    Loss of profits, data, or goodwill.
+                  </li>
+                </ul>
+              </div>
+            </section>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Ownership of Content and Commercial Use</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Surrender of Rights:</span> By
-                            using the AI Chatbot, you irrevocably assign and surrender all rights,
-                            title, interest, and intellectual property rights in any content, inputs
-                            you provide, and outputs generated by the AI Chatbot to {OWNER_NAME}.
-                            This includes, but is not limited to, text, questions, and conversations.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Commercial and Research Use:</span>{" "}
-                            {OWNER_NAME} reserves the right to use any input provided by users and
-                            any output generated by the AI Chatbot for commercial purposes, research,
-                            or other activities without compensation or notification to users.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Claim to Gains or Profits:</span>{" "}
-                            Users agree that they have no rights, claims, or entitlement to
-                            any gains, profits, or benefits derived from the use or
-                            exploitation of the content provided to the AI Chatbot.
-                        </li>
-                    </ol>
-                </div>
+            <section className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">4. User Responsibilities & Prohibited Use</h2>
+              
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">4.1. Final Decision</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  You acknowledge that {AI_NAME} provides <em>recommendations</em> only. The final decision to choose a courier, route, or vehicle lies solely with you.
+                </p>
+              </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Indemnification</h3>
-                    <p className="text-gray-700">
-                        By using the AI Chatbot, you agree to indemnify and hold harmless
-                        {OWNER_NAME}, his collaborators, partners, affiliated entities, and
-                        representatives from any claims, damages, losses, or liabilities
-                        arising out of your use of the AI Chatbot or violation of these
-                        terms.
-                    </p>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">4.2. Prohibited Queries</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  You agree not to use the Service to plan the shipment of illegal goods, contraband, hazardous materials, or restricted items under Indian Law.
+                </p>
+              </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Governing Law and Jurisdiction</h3>
-                    <p className="text-gray-700">
-                        These terms are governed by the laws of the State of North Carolina,
-                        United States. Additional jurisdictions may apply for users outside
-                        the United States, subject to applicable local laws. In case of
-                        conflicts, the laws of North Carolina shall prevail to the extent
-                        permissible. Any disputes arising under or in connection with these
-                        terms shall be subject to the exclusive jurisdiction of the courts
-                        located in North Carolina.
-                    </p>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">4.3. Indemnification</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  You agree to indemnify and hold harmless the owners of {AI_NAME} from any claims arising out of your use of the AI's advice.
+                </p>
+              </div>
+            </section>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Acceptance of Terms</h3>
-                    <p className="text-gray-700">
-                        By using the AI Chatbot, you confirm that you have read, understood,
-                        and agreed to these Terms of Use and Disclaimer. If you do not
-                        agree with any part of these terms, you may not use the AI Chatbot.
-                    </p>
-                </div>
+            <section className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">5. Third-Party Links</h2>
+              <p className="text-gray-700 leading-relaxed">
+                The Service may use Web Search tools to provide links to third-party courier websites. We are not responsible for the content, privacy policies, or practices of any third-party sites or services.
+              </p>
+            </section>
 
-                <div className="mt-8 text-sm text-gray-600">
-                    <p>Last Updated: November 17, 2025</p>
-                </div>
+            <section className="mb-8">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">6. Governing Law</h2>
+              <p className="text-gray-700 leading-relaxed">
+                These Terms shall be governed by the laws of India, without regard to its conflict of law provisions.
+              </p>
+            </section>
+
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <p className="text-sm text-gray-500 text-center">
+                © {new Date().getFullYear()} {OWNER_NAME}. All rights reserved.
+              </p>
             </div>
+          </div>
         </div>
-    );
+      </main>
+
+      <Footer />
+    </div>
+  );
 }

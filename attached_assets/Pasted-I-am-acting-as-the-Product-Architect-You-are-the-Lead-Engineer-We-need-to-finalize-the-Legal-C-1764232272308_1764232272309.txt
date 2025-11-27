@@ -1,0 +1,61 @@
+I am acting as the Product Architect. You are the Lead Engineer.
+We need to finalize the "Legal & Compliance" layer and the "International Logic" handler for the `Delivera` application.
+
+Please execute the following 2 Tasks.
+
+### TASK 1: BUILD THE "TERMS OF SERVICE" PAGE
+**Action:** Create a new page at `/terms`.
+**Design:** Use a clean, readable document layout (white background, dark gray text, max-width-3xl centered).
+**Navigation:** Add a "Terms & Disclaimer" link to the main Footer.
+
+**Content Specification:**
+You must use the following **detailed text** for the Terms of Service. Do not summarize; use the full clauses below to ensure legal safety.
+
+---
+**Title:** Terms of Service & AI Disclaimer
+**Last Updated:** [Current Date]
+
+**1. Acceptance of Terms**
+By accessing and using "Delivera" (the "Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this Service.
+
+**2. Nature of the Service (AI Disclaimer)**
+**2.1. Artificial Intelligence:** Delivera utilizes Large Language Models (LLMs) and probabilistic data analysis. You acknowledge that the Service is an automated AI system and **not a human logistics expert**.
+**2.2. Accuracy:** While we strive for accuracy based on our dataset of 25,000 records, the Service may produce outputs that are inaccurate, incomplete, or "hallucinated." The Service may make errors in reasoning or math.
+**2.3. Verification:** You agree to independently verify all logistics recommendations, shipping rates, and partner capabilities before making any financial or business decisions.
+
+**3. Limitation of Liability (Crucial)**
+**3.1. "As-Is" Basis:** The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The owners and developers of Delivera make no representations or warranties of any kind, express or implied, regarding the operation of the Service or the information, content, or materials included therein.
+**3.2. Exclusion of Damages:** To the fullest extent permitted by law, the owners of Delivera shall **NOT be liable** for any direct, indirect, incidental, special, or consequential damages resulting from:
+   a) The use or inability to use the Service.
+   b) Cost of procurement of substitute goods/services.
+   c) Lost shipments, delayed deliveries, or "Return to Origin" (RTO) losses.
+   d) Loss of profits, data, or goodwill.
+
+**4. User Responsibilities & Prohibited Use**
+**4.1. Final Decision:** You acknowledge that Delivera provides *recommendations* only. The final decision to choose a courier, route, or vehicle lies solely with you.
+**4.2. Prohibited Queries:** You agree not to use the Service to plan the shipment of illegal goods, contraband, hazardous materials, or restricted items under Indian Law.
+**4.3. Indemnification:** You agree to indemnify and hold harmless the owners of Delivera from any claims arising out of your use of the AI's advice.
+
+**5. Third-Party Links**
+The Service may use Web Search tools to provide links to third-party courier websites. We are not responsible for the content, privacy policies, or practices of any third-party sites or services.
+
+**6. Governing Law**
+These Terms shall be governed by the laws of India, without regard to its conflict of law provisions.
+
+---
+
+### TASK 2: UPDATE BACKEND LOGIC (International Handling)
+**Action:** Update the `system_prompt` (Backend Instructions) to handle non-domestic queries safely.
+**Instruction:** Append this specific logic module to the System Prompt:
+
+**Module: International & Out-of-Scope Handling**
+* **Trigger:** If the user asks for shipping advice to a location **outside of India** (e.g., USA, UK, Europe, Dubai).
+* **Execution Protocol:**
+    1.  **Stop Database Lookup:** Do NOT attempt to use the internal dataset (which is India-only).
+    2.  **Mandatory Disclaimer:** You must begin your response with: *"Please note: Delivera is currently optimized for domestic Indian logistics. However, I can assist you by finding the latest international rates via the web."*
+    3.  **Action:** Immediately invoke the **Web Search Tool**.
+    4.  **Query:** Search for "Best courier services from India to [Destination]" or "Shipping rates for [Item] to [Destination]."
+    5.  **Output:** Summarize the web results, providing estimated costs and timelines from major international carriers (DHL, FedEx, Aramex).
+
+**Execution:**
+Please implement the Terms page with the text above and update the System Prompt logic now.
