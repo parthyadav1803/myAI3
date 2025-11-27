@@ -138,7 +138,17 @@ export function ChatPopup() {
   }
 
   function clearChat() {
-    const newMessages: UIMessage[] = [];
+    const welcomeMessage: UIMessage = {
+      id: `popup-welcome-${Date.now()}`,
+      role: "assistant",
+      parts: [
+        {
+          type: "text",
+          text: WELCOME_MESSAGE,
+        },
+      ],
+    };
+    const newMessages: UIMessage[] = [welcomeMessage];
     const newDurations = {};
     setMessages(newMessages);
     setDurations(newDurations);
