@@ -11,7 +11,7 @@ export const Response = memo(
   ({ className, ...props }: ResponseProps) => (
     <Streamdown
       className={cn(
-        "size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0",
+        "size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:ml-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:ml-1 [&_li]:pl-1",
         className
       )}
       rehypePlugins={[
